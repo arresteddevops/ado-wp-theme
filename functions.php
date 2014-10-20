@@ -230,6 +230,27 @@ function bones_comments( $comment, $args, $depth ) {
 <?php
 } // don't remove this bracket!
 
+/************* ADO Episode Custom Post Type *********************/
+
+
+add_action( 'init', 'create_post_type' );
+function create_post_type() {
+  register_post_type( 'ado_episode',
+    array(
+      'labels' => array(
+        'name' => __( 'Episodes' ),
+        'singular_name' => __( 'Episode' )
+      ),
+      'public' => true,
+      'has_archive' => true,
+      'menu_position' => 5,
+      'rewrite' => array(
+       'slug' => 'episodes' ),
+      'supports' => array( 
+        'title','custom-fields' )
+    )
+  );
+}
 
 /*
 This is a modification of a function found in the
